@@ -5,11 +5,12 @@ int Recursive(int time, int hourlyWage) {
 	int wages = 0; //給料
 	int nextHourlyWage = 0; //次の時給
 
-
 	wages = hourlyWage;
 
-	nextHourlyWage = hourlyWage * 2 - 50;
-	wages = Recursive(time - 1,hourlyWage);
+	if (time - 1 >= 0) {
+		nextHourlyWage = hourlyWage * 2 - 50;
+		wages += Recursive(time - 1, hourlyWage);
+	}
 
 	return wages;
 
@@ -23,7 +24,6 @@ int main() {
 
 	//変数
 	int time = 0; //働く時間
-	int hourlyWage = 0; //時給
 	int wages = 0; //給料
 	
 	//何時間働くか
@@ -31,13 +31,11 @@ int main() {
 	scanf_s("%d", &time);
 
 	//一般的な賃金体系
-	hourlyWage = kGeneralHourlyWage;
-	wages = hourlyWage * time;
+	wages = kGeneralHourlyWage * time;
 	printf("一般的な賃金体系 %d\n", wages);
 
 	//再帰的な賃金体系
-	hourlyWage = kRecursiveHourlyWage;
-	wages = hourlyWage * time;
+	wages = Recursive(time, kRecursiveHourlyWage);
 	printf("再帰的な賃金体系 %d\n", wages);
 
 	return 0;
