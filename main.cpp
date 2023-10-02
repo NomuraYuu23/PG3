@@ -30,7 +30,7 @@ char Min<char>(char a, char b) {
 
 	printf("数字以外は代入できません");
 
-	return NULL;
+	return 0;
 
 }
 
@@ -40,33 +40,25 @@ int main() {
 	//int型
 	int intA = 10;
 	int intB = 20;
-	int intResult = 0;
 	//float型
 	float floatA = 10.5f;
 	float floatB = 10.2f;
-	float floatResult = 0.0f;
 	//double型
 	double doubleA = 10.3;
 	double doubleB = 10.8;
-	double doubleResult = 0.0;
 	//char型
 	char charA = 'A';
 	char charB = 'B';
-	char charResult = NULL;
 
 	//関数Min呼び出し
 	//int型
-	intResult = Min<int>(intA, intB);
-	printf("%d\n", intResult);
+	printf("%d\n", Min<int>(intA, intB));
 	//float型
-	floatResult = Min<float>(floatA, floatB);
-	printf("%f\n", floatResult);
+	printf("%f\n", Min<float>(floatA, floatB));
 	//double型
-	doubleResult = Min<double>(doubleA, doubleB);
-	printf("%lf\n", doubleResult);
+	printf("%lf\n", Min<double>(doubleA, doubleB));
 	//char型
-	charResult = Min<char>(charA, charB);
-	printf("%c\n", charResult);
+	Min<char>(charA, charB);
 
 	return 0;
 
