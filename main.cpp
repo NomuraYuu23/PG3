@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/// <summary>
+/// 再帰関数
+/// </summary>
+/// <param name="time">時間</param>
+/// <param name="hourlyWage">この時間の時給</param>
+/// <returns>給料</returns>
 int Recursive(int time, int hourlyWage) {
 
 	int wages = 0; //給料
