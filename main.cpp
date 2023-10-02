@@ -11,10 +11,10 @@ template <typename T>
 T Min(T a, T b) {
 
 	if (a <= b) {
-		return a;
+		return static_cast<T>(a);
 	}
 	else {
-		return b;
+		return static_cast<T>(b);
 	}
 
 }
@@ -40,25 +40,33 @@ int main() {
 	//int型
 	int intA = 10;
 	int intB = 20;
+	int intResult = 0;
 	//float型
 	float floatA = 10.5f;
 	float floatB = 10.2f;
+	float floatResult = 0.0f;
 	//double型
 	double doubleA = 10.3;
 	double doubleB = 10.8;
+	double doubleResult = 0.0;
 	//char型
 	char charA = 'A';
 	char charB = 'B';
+	char charResult = NULL;
 
 	//関数Min呼び出し
 	//int型
-	printf("%d\n", Min<int>(intA, intB));
+	intResult = Min<int>(intA, intB);
+	printf("%d\n", intResult);
 	//float型
-	printf("%f\n", Min<float>(floatA, floatB));
+	floatResult = Min<float>(floatA, floatB);
+	printf("%f\n", floatResult);
 	//double型
-	printf("%lf\n", Min<double>(doubleA, doubleB));
+	doubleResult = Min<double>(doubleA, doubleB);
+	printf("%lf\n", doubleResult);
 	//char型
-	printf("%c\n", Min<char>(charA, charB));
+	charResult = Min<char>(charA, charB);
+	printf("%c\n", charResult);
 
 	return 0;
 
