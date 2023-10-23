@@ -42,7 +42,7 @@ void Result(int* userInput) {
 /// <param name="second">秒数</param>
 /// <param name="p">関数ポインタ</param>
 /// <param name="funcArgument">関数ポインタの引数1</param>
-void SetTimeOut(int second, PFunc p, int* funcArgument) {
+void SetTimeOut(PFunc p, int second, int* funcArgument) {
 
 	Sleep(second * 1000);
 
@@ -69,7 +69,7 @@ int main() {
 	PFunc p;
 	p = &Result;
 	// 三秒待つ
-	SetTimeOut(3, p, &userInput);
+	SetTimeOut(p, 3, &userInput);
 
 	return 0;
 
