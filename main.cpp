@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+/// <summary>
+/// 指クラス
+/// </summary>
 class Finger {
 
 public: // メンバ関数
@@ -9,34 +12,62 @@ public: // メンバ関数
 
 	virtual void NameDisplay() = 0;
 
-protected: //メンバ変数
-
-	const char* name_;
-
 };
 
+/// <summary>
+/// 親指クラス
+/// </summary>
 class Thumb : public Finger {
 
 public: // メンバ関数
 
-	Thumb();
-	~Thumb();
+	Thumb() = default;
+	~Thumb() = default;
 
 	virtual void NameDisplay();
 
 };
 
-Thumb::Thumb()
-{
-
-	name_ = "親指\n";
-
-}
-
-Thumb::~Thumb()
-{
-}
-
 void Thumb::NameDisplay()
 {
+	printf("親指\n");
 }
+
+/// <summary>
+/// 人指し指クラス
+/// </summary>
+class IndexFinger : public Finger {
+
+public: // メンバ関数
+
+	IndexFinger() = default;
+	~IndexFinger() = default;
+
+	virtual void NameDisplay();
+
+};
+
+void IndexFinger::NameDisplay()
+{
+	printf("人指し指\n");
+}
+
+/// <summary>
+/// 中指クラス
+/// </summary>
+class MiddleFinger : public Finger {
+
+public: // メンバ関数
+
+	MiddleFinger() = default;
+	~MiddleFinger() = default;
+
+	virtual void NameDisplay();
+
+};
+
+void MiddleFinger::NameDisplay()
+{
+	printf("中指\n");
+}
+
