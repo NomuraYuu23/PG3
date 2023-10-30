@@ -9,7 +9,7 @@ typedef void (*PFunc)(int*);
 /// 結果を返す関数
 /// </summary>
 /// <param name="userInput">ユーザー入力</param>
-void Result(int* userInput) {
+void DisplayResult(int* userInput) {
 
 	int result = 0;
 	int answer = 0;
@@ -67,7 +67,7 @@ int main() {
 	// 結果表示
 	printf("結果は");
 	PFunc p;
-	p = &Result;
+	p = &DisplayResult;
 	// 三秒待つ
 	SetTimeOut(p, 3, &userInput);
 
