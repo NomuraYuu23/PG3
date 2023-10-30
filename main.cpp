@@ -6,7 +6,7 @@
 /// <param name="time">時間</param>
 /// <param name="hourlyWage">この時間の時給</param>
 /// <returns>給料</returns>
-int Recursive(int time, int hourlyWage) {
+int SalaryCalculation(int time, int hourlyWage) {
 
 	int wages = 0; //給料
 	int nextHourlyWage = 0; //次の時給
@@ -15,7 +15,7 @@ int Recursive(int time, int hourlyWage) {
 
 	if (time - 1 > 0) {
 		nextHourlyWage = hourlyWage * 2 - 50;
-		wages += Recursive(time - 1, nextHourlyWage);
+		wages += SalaryCalculation(time - 1, nextHourlyWage);
 	}
 
 	return wages;
@@ -41,7 +41,7 @@ int main() {
 	printf("一般的な賃金体系 %d円\n", wages);
 
 	//再帰的な賃金体系
-	wages = Recursive(time, kRecursiveHourlyWage);
+	wages = SalaryCalculation(time, kRecursiveHourlyWage);
 	printf("再帰的な賃金体系 %d円\n", wages);
 
 	return 0;
