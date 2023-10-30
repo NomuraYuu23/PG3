@@ -7,37 +7,6 @@
 typedef void (*PFunc)(int*);
 
 /// <summary>
-/// 結果を返す関数
-/// </summary>
-/// <param name="userInput">ユーザー入力</param>
-void Result(int* userInput) {
-
-	int result = 0;
-	int answer = 0;
-
-	// ランダムで結果を決める
-	std::srand(static_cast<unsigned int>(time(NULL)));
-	result = rand() % 6 + 1;
-	answer = result % 2;
-
-	// 結果表示
-	if (answer == 1) {
-		printf("%d。奇数でした。\n", result);
-	}
-	else {
-		printf("%d。偶数でした。\n", result);
-	}
-
-	if (answer == *userInput) {
-		printf("あたりです\n");
-	}
-	else {
-		printf("はずれです\n");
-	}
-
-}
-
-/// <summary>
 /// コールバック関数
 /// </summary>
 /// <param name="second">秒数</param>
@@ -67,7 +36,7 @@ int main() {
 
 	// 結果表示
 	printf("結果は");
-	std::function<void(int*)> result = [](int* userInput) {
+	std::function<void(int*)> displayResult = [](int* userInput) {
 
 		int result = 0;
 		int answer = 0;
@@ -95,7 +64,7 @@ int main() {
 	};
 
 	// 三秒待つ
-	SetTimeOut(3, result, &userInput);
+	SetTimeOut(3, displayResult, &userInput);
 
 	return 0;
 
