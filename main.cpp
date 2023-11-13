@@ -9,7 +9,7 @@ template <typename T1, typename T2>
 class MyMath {
 public:
 
-	static double Min(T1 a, T2 b);
+	static T1 Min(T1 a, T2 b);
 
 };
 
@@ -22,14 +22,14 @@ public:
 /// <param name="b"></param>
 /// <returns></returns>
 template<typename T1, typename T2>
-double  MyMath<T1, T2>::Min(T1 a, T2 b)
+T1  MyMath<T1, T2>::Min(T1 a, T2 b)
 {
 
-	if (static_cast<double>(a) < static_cast<double>(b)) {
-		return static_cast<double>(a);
+	if (static_cast<T1>(a) < static_cast<T1>(b)) {
+		return static_cast<T1>(a);
 	}
 
-	return static_cast<double>(b);
+	return static_cast<T1>(b);
 
 }
 
@@ -40,31 +40,33 @@ double  MyMath<T1, T2>::Min(T1 a, T2 b)
 int main() {
 
 	// 結果用変数
-	double result = 0.0;
+	int resultInt = 0;
+	float resultFloat = 0.0f;
+	double resultDouble = 0.0;
 
 	// int, int
-	result = MyMath<int, int>::Min(10, 20);
-	printf("%lf\n", result);
+	resultInt = MyMath<int, int>::Min(10, 20);
+	printf("%d\n", resultInt);
 
 	// float, float
-	result = MyMath<float, float>::Min(0.1f, 0.2f);
-	printf("%lf\n", result);
+	resultFloat = MyMath<float, float>::Min(0.1f, 0.2f);
+	printf("%f\n", resultFloat);
 
 	// double, double
-	result = MyMath<double, double>::Min(10.1, 0.1);
-	printf("%lf\n", result);
+	resultDouble = MyMath<double, double>::Min(10.1, 0.1);
+	printf("%lf\n", resultDouble);
 
 	// int, float
-	result = MyMath<int, int>::Min(10, 20.0f);
-	printf("%lf\n", result);
+	resultInt = MyMath<int, float>::Min(10, 20.0f);
+	printf("%d\n", resultInt);
 
 	// int, double
-	result = MyMath<float, float>::Min(10, 10.2);
-	printf("%lf\n", result);
+	resultInt = MyMath<int, double>::Min(10, 10.2);
+	printf("%d\n", resultInt);
 
 	// float, double
-	result = MyMath<double, double>::Min(10.1f, 10.2);
-	printf("%lf\n", result);
+	resultFloat = MyMath<float, double>::Min(10.1f, 10.2);
+	printf("%lf\n", resultFloat);
 
 	return 0;
 
