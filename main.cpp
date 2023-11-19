@@ -11,12 +11,11 @@ typedef void (*PFunc)(int*);
 /// </summary>
 /// <param name="second">秒数</param>
 /// <param name="p">関数ポインタ</param>
-/// <param name="funcArgument">関数ポインタの引数1</param>
-void SetTimeOut(int second, std::function<void(int*)> func, int* funcArgument) {
+void SetTimeOut(int second, std::function<void()> func) {
 
 	Sleep(second * 1000);
 
-	func(funcArgument);
+	func();
 
 }
 
@@ -36,7 +35,7 @@ int main() {
 
 	// 結果表示
 	printf("結果は");
-	std::function<void(int*)> displayResult = [](int* userInput) {
+	std::function<void()> displayResult = [=]() {
 
 		int result = 0;
 		int answer = 0;
@@ -54,7 +53,7 @@ int main() {
 			printf("%d。偶数でした。\n", result);
 		}
 
-		if (answer == *userInput) {
+		if (answer == userInput) {
 			printf("あたりです\n");
 		}
 		else {
@@ -64,7 +63,7 @@ int main() {
 	};
 
 	// 三秒待つ
-	SetTimeOut(3, displayResult, &userInput);
+	SetTimeOut(3, displayResult);
 
 	return 0;
 
