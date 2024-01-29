@@ -1,21 +1,31 @@
-#include <stdio.h>
-#include <thread>
+#include <iostream>
+#include <string>
+#include <chrono>
 using namespace std;
-
-void ThreadPrint(int num) {
-
-	printf("thread %d\n", num);
-
-}
 
 int main() {
 
-	thread threadPrint1(ThreadPrint, 1);
-	threadPrint1.join();
-	thread threadPrint2(ThreadPrint, 2);
-	threadPrint2.join();
-	thread threadPrint3(ThreadPrint, 3);
-	threadPrint3.join();
+	//現在時間を取得
+	chrono::steady_clock::time_point begin = chrono::steady_clock::now();
+	
+	// 宣言
+	string a(1000000, 'a');
+
+	//コピー
+	begin = chrono::steady_clock::now();
+	string copy = a;
+	chrono::steady_clock::time_point copyTimePoint = chrono::steady_clock::now();
+	chrono::microseconds copyTime = chrono::duration_cast<chrono::microseconds>(copyTimePoint - begin);
+
+	// ムーブ
+	begin = chrono::steady_clock::now();
+	string move = std::move(a);
+	chrono::steady_clock::time_point moveTimePoint = chrono::steady_clock::now();
+	chrono::microseconds moveTime = chrono::duration_cast<chrono::microseconds>(moveTimePoint - begin);
+
+	//表示
+	cout << "コピー : " << copyTime.count() << "マイクロ秒" << endl;
+	cout << "ムーブ : " << moveTime.count() << "マイクロ秒" << endl;
 
 	return 0;
 
