@@ -9,7 +9,7 @@ int main() {
 	chrono::steady_clock::time_point begin = chrono::steady_clock::now();
 	
 	// 宣言
-	string a(1000000, 'a');
+	string a(100000, 'a');
 
 	//コピー
 	begin = chrono::steady_clock::now();
